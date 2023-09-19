@@ -9,11 +9,7 @@ Vagrant.configure("2") do |config|
   vm1.vm.synced_folder "/home/gabriel_victor/projeto_vagrant/Criando-vm-via-Vagrant/sync_folder", "/var/www/html"
   vm1.vm.network "forwarded_port", guest: 80, host: 8081
   vm1.vm.provision "shell", path: "/sh/vm1.sh"
-  vm1.vm.provision "shell", inline: <<-SHELL
-    sudo apt update
-    sudo apt upgrade
-    sudo apt install -y apache2
-  SHELL
+
   end
 # -------------------------------------------------------------------------
   config.vm.define "vm2" do |vm2|
@@ -26,11 +22,6 @@ Vagrant.configure("2") do |config|
     vm2.vm.synced_folder "/home/gabriel_victor/projeto_vagrant/Criando-vm-via-Vagrant/sync_folder", "/var/www/html"
     vm2.vm.network "forwarded_port", guest:80, host: 8082
     vm2.vm.provision "shell", path: "/sh/vm2.sh"
-    vm2.vm.provision "shell", inline: <<-shell
-      sudo apt update
-      sudo apt upgrade
-      sudo apt install -y mysql -server
-    shell
   end
 # -------------------------------------------------------------------------
   config.vm.define "vm3" do |vm3|
@@ -39,8 +30,16 @@ Vagrant.configure("2") do |config|
       vb.memory = 2048
       vb.cpus = 2
     end
-    vm3.vm.network
-    vm3.vm.synced_folder
-    vm3.vm.network
+    vm3.vm.network "private_network", ip: "192.168.50.12", auto_config: false, virtualbox__intnet: "eth0"
+    vm3.vm.network "public_network", type: "dhcp"
+
+    vm3.vm.synced_folder "/home/gabriel_victor/projeo_vagrant/Criando-vm-via-Vagrant/sync_folder", "/var/www/html"
+    vm3.vm.network "forwarded_port", guest:80, host: 8083
     vm3.vm.provision "shell", path: "/sh/vm3.sh"
+    vm3.vm.provider "virtualbox" do |provedor|
+      provedor.gui = true
+      provedor.memory = "2048"
+      provedor.vpus = "2"
+    end
+  end
 end
