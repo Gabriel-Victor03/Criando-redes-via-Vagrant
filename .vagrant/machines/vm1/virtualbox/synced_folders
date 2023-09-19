@@ -1,0 +1,1 @@
+{"virtualbox":{"/var/www/html":{"guestpath":"/var/www/html","hostpath":"/home/gabriel_victor/projeto_vagrant/Criando-vm-via-Vagrant/sync_folder","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"/home/gabriel_victor/projeto_vagrant/Criando-vm-via-Vagrant","disabled":false,"__vagrantfile":true}}}
