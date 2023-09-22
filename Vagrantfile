@@ -31,7 +31,7 @@ config.vm.define "vm3" do |vm3|
         vm3.vm.box = "ubuntu/focal64"
         vm3.vm.provider "virtualbox" do |vb|
         vb.memory = 1024
-        vb.cpus = 2
+        vb.cpus = 1
         end
         vm3.vm.network "private_network", ip: "192.168.50.12", auto_config: false, virtualbox__intnet: "eth0" , hostname: true
         vm3.vm.network "public_network", type: "dhcp" , bridge: "enp2s0"
