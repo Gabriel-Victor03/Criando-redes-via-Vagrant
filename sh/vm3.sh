@@ -1,5 +1,4 @@
 #!/bin/bash
-
 echo "Maquina Virtual 3 rodando"
 sudo apt update
 sudo apt upgrade
