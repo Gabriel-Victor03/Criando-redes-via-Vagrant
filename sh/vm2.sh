@@ -3,6 +3,8 @@ echo "Maquina Virtual 2 rodando"
 sudo apt update
 sudo apt upgrade
 sudo apt install -y mysql-server
+# configurando a vm3 como gateway padrão
+echo "route add default gw 192.168.50.12" >> /etc/network/interfaces 
 # instalando pacotes para criação da porta da rede
 sudo apt install net-tools
 sudo apt istall ifupdown
