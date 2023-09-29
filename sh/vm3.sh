@@ -8,8 +8,8 @@ sudo apt istall ifupdown
 sudo ifconfig enp0s8 up 
 sudo ip addr add 192.168.50.12/24 dev enp0s8
 #configurar o gateway da rede pública 
-sudo sysctl -w net.ipv4.ip_forward=1
-#configurar o NAT
+sudo sysctl -w net.ipv4.ip_forward=1 #habilita o encaminhamento de ip para permitir roteamento
+#configurar a regra do NAT para traduzir endereços
 sudo iptables -t nat -A POSTROUTING -o -enp0s3 -j MASQUERADE
 #Linkando a máquina vm1
 sudo ip route add 192.168.50.10 via 192.168.50.12 
